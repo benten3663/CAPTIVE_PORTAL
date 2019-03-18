@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "VerifyEmail";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+        @@media (min-width: 500px) {
+            body {
+                background-image: linear-gradient(to right, rgb(0,120,51), rgb(153,204,1));
+                width: 100%;
+                height: 100%;
+                padding: 50px;
+            }
+        }
+
+        .container {
+            min-width: 200px;
+            max-width: 350px;
+            margin: auto;
+            max-height: 330px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 50px 30px;
+            background-color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .para {
+            justify-content: center;
+            font-family: "Verdana";
+            font-size: 14px;
+            font-weight: lighter;
+            opacity: 0.8;
+        }
+
+        .head {
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+        .login {
+            align: center;
+            color: green;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        <!-- .language { -->
+            <!-- float: right; -->
+            <!-- padding-top: 3px; -->
+            <!-- margin-right: 3px; -->
+            <!-- text-align: center; -->
+            <!-- color: green; -->
+            <!--
+        }
+        -->
+
+        .dropdown {
+            background-color: rgb(153,204,1)
+        }
+
+        .dropdown-menu {
+            width: 140px;
+            height: 60px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="vertical-align:middle;">
+        <div class="container">
+
+            <h1 class="head">NOW CHECK YOUR EMAIL</h1><br>
+            <p class="para">
+                Check the email account associated with your user name for instructions on resetting your password.
+                Remember to look in your spam folder, where automated messages can sometimes end up.
+            </p><br>
+
+            <a class="login" href="www.google.com"></a>
+            @Html.ActionLink("Back to login", "userLogin", "Register", null, null)
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+﻿@model WebApplication1.Models.LoginModel
+@{
+    ViewBag.Title = "UserLogin";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="~/Scripts/style.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#popupdiv').html() != '') {
+                $("#popupdiv").show();
+            }
+        });
+    </script>
+
+
+
+</head>
+<body>
+    @using (Html.BeginForm("UserLogin", "Home", FormMethod.Post))
+    {
+
+        <div class="form-container">
+            <div>
+                <form class="form-container" method="post" action="">
+
+                    <div class="logo">
+                        <img class="bplogo" src="https://idptest-bpcustomer.cs109.force.com/BP/resource/1518940384000/REIDP_Logo_MID" width="120"> <br><br>
+                    </div>
+
+
+                    <div id="popupdiv" style="color:red">@ViewBag.Message</div>
+                    <div class="form-group">
+                        @*<input type="email" class="form-control input-lg" id="email" placeholder="Email">*@
+                        @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control input-lg", id = "userName", placeholder = "User name" } })
+                        @Html.ValidationMessageFor(m => m.Username)
+                    </div>
+
+                    <div class="form-group">
+                        @*<input type="password" class="form-control input-lg" id="pwd" placeholder="Password">*@
+                        @*@Html.PasswordFor(m => m.Password, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Password" } })*@
+                        @Html.PasswordFor(m => m.Password, new { id = "password", @class = "form-control input-lg", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+
+
+                    <button type="submit" id="submit" class="btn btn-dark-green btn-block" style="background-color:green; color:white;
+                    padding-bottom:10px; padding-top:10px; margin-bottom:5px;">
+                        Log in
+                    </button>
+                    @*<a class="forgot" href="www.google.com" style="float:left; color:green">Forgot your password?</a>*@
+                    @Html.ActionLink("Click Here to register", "UserRegister", "Home", null, null)
+
+                </form>
+            </div>
+
+            <!-- <input type="checkbox" id="termsChkbx " onclick="change_button(this,'sub1')"/> -->
+            <!-- <p><input type="submit" name="submit" value="Order now!" id="sub1" disabled="disabled"/></p> -->
+
+        </div>
+    }
+
+
+</body>
+</html>

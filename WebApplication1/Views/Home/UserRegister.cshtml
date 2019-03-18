@@ -1,0 +1,94 @@
+﻿@model WebApplication1.Models.EmailUserRegistrationModel
+@{
+    ViewBag.Title = "UserRegister";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="~/Scripts/style.css" rel="stylesheet" />
+    <script type="text/javascript">
+function change_button(checkbx,button_id) {
+    var btn = document.getElementById(button_id);
+    if (checkbx.checked == true) {
+        btn.disabled = "";
+    } else {
+        btn.disabled = "disabled";
+    }
+}
+    </script>
+
+
+</head>
+<body>
+    @using (Html.BeginForm("UserRegister", "Register", FormMethod.Post))
+    {
+        <div class="form-container">
+            <div>
+                <form class="form-container">
+
+                    <div class="logo">
+                        <img class="bplogo" src="https://idptest-bpcustomer.cs109.force.com/BP/resource/1518940384000/REIDP_Logo_MID" width="120"> <br><br>
+                    </div>
+
+                    <div class="form-group">
+                        @*<input type="text" class="form-control input-lg" id="firstname" placeholder="Firstname">*@
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "First Name" } })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+
+                    <div class="form-group ">
+                        @*<input type="text" class="form-control input-lg" id="lastname" placeholder="Lastname">*@
+                        @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+
+                    <div class="form-group ">
+                        @*<input type="email" class="form-control input-lg" id="email" placeholder="Email">*@
+                        @*@Html.TextBoxFor(m => m.Email)*@
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Email" } })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+
+                    @*<div class="form-group">
+                            <input type="phone" class="form-control input-lg" id="phn " placeholder="Phone"><br>
+                        </div>*@
+
+                    <div class="col-lg-12">
+                        <p class="text-muted">
+                            <input type="checkbox" value="checkbox" id="termsChkbx " onclick="change_button(this,'sub1')" />By clicking "Sign Up", you agree to BP`s
+                            <a href="www.google.com" style="color:green">Terms and Conditions</a> and <a href="www.google.com" style="color:green"> Privacy Policy </a>
+                        </p>
+                        <button type="submit" name="sendNewSms" class="btn btn-dark-green btn-block" id="sub1" value=""
+                                style="background-color:green;color:white; padding-bottom:10px; padding-top:10px; margin-bottom:5px;" disabled="disabled">
+                            Sign Up
+                        </button>
+
+                    </div>
+                    <div class="account">
+                        <p style="color:green">@Html.ActionLink("Already have an account?", "userLogin", "Register", null, null)</p>
+
+                    </div>
+                </form>
+            </div>
+
+            <!-- <input type="checkbox" id="termsChkbx " onclick="change_button(this,'sub1')"/> -->
+            <!-- <p><input type="submit" name="submit" value="Order now!" id="sub1" disabled="disabled"/></p> -->
+
+        </div>
+    }
+</body>
+</html>
+
+
