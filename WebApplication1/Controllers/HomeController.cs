@@ -121,9 +121,10 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult UserLogin()
         {
-
+            
             return View();
         }
+
 
         [HttpPost]
         public async Task<ActionResult> UserLogin(LoginModel l)
@@ -280,12 +281,14 @@ namespace WebApplication1.Controllers
 
                     Dictionary<string, string> jsonValues = new Dictionary<string, string>();
 
-                    jsonValues.Add("active", "true");
-                    jsonValues.Add("user_groups", "[\"/api/v1/usergroups/10/\"]");
-                    jsonValues.Add("username", userName);
-                    jsonValues.Add("password", "password");
+                    //jsonValues.Add("active", "true");
+                    //jsonValues.Add("user_groups", "[\"/api/v1/usergroups/10/\"]");
+                    //jsonValues.Add("username", userName);
+                    //jsonValues.Add("password", "password");
 
-                    request.Content = new StringContent(JsonConvert.SerializeObject(jsonValues), Encoding.UTF8, "application/json");
+                    request.Content = new StringContent("{\"active\": true,\"user_groups\":[\"/api/v1/usergroups/10/\"], \"username\": \""+userName+"\",\"password\":\"password\"}", Encoding.UTF8, "application/json");
+
+                    //request.Content = new StringContent(JsonConvert.SerializeObject(jsonValues), Encoding.UTF8, "application/json");
 
                     var response = await httpLocalClient.SendAsync(request);
 
